@@ -1,0 +1,7 @@
+phases:
+  install:
+    commands:
+      #install dependencies needed for running tests
+      -npm install
+      #upgrade Aws cli to the latest version
+      -pip install --upgrade awscli
