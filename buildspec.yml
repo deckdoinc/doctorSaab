@@ -2,7 +2,7 @@ version: 0.2
 phases:
   install:
     commands:
-      -pip install --upgrade awscli
+      #-pip install --upgrade awscli
       -npm install
       -npm app.js
       
