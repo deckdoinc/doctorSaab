@@ -2,10 +2,7 @@ version: 0.2
 phases:
   install:
     commands:
-      #install dependencies needed for running tests
       -pip install --upgrade awscli
       -npm install
       -npm app.js
-      #upgrade Aws cli to the latest version
-      -pip install --upgrade awscli
       
