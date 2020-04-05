@@ -6,7 +6,7 @@ phases:
     runtime-versions:
       nodejs: 10  
     commands:
-      - echo Installing Mocha...
+      - echo Installing Mocha......
       - npm install -g mocha
   pre_build:
     commands:
