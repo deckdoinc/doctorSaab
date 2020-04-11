@@ -1,15 +1,15 @@
 {
-  "name": "hackathon-starter",
-  "version": "6.0.0",
-  "description": "A boilerplate for Node.js web applications",
+  "name": "DoctorSaab",
+  "version": "1.0.0",
+  "description": "System to facilitate Nepal medical services for US clients",
   "repository": {
     "type": "git",
     "url": "https://github.com/sahat/hackathon-starter.git"
   },
   "license": "MIT",
-  "author": "Sahat Yalkabov",
+  "author": "Amit Dhital",
   "contributors": [
-    "Yashar Fakhari (https://github.com/YasharF)"
+    "Biwash Bohara "
   ],
   "scripts": {
     "postinstall": "npm rebuild node-sass",
@@ -22,7 +22,7 @@
     "@ladjs/bootstrap-social": "^7.0.2",
     "@octokit/rest": "^17.0.0",
     "axios": "^0.19.2",
-    "bcrypt": "^4.0.0",
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
     "chalk": "^3.0.0",

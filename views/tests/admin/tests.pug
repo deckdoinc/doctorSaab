@@ -1,0 +1,30 @@
+extends ../../layout
+
+block content
+  .pb-2.mt-6.mb-12
+    a.btn.btn-primary(href="/admin/addtest") Add Test
+
+  .row
+    table.table.table-striped.table-hover.table-sm
+     thead
+      tr
+       th(scope='col') SNo
+       th(scope='col') Name
+       th(scope='col') Type
+       th(scope='col') Specimen
+       th(scope='col') Group
+       th(scope='col') Gender
+       th(scope='col') Active
+       th(scope='col')
+     tbody
+      for item, index in tests
+       tr
+        td #{index}
+        td #{item.name}
+        td #{item.type}
+        td #{item.specimen}
+        td #{item.minage} - #{item.maxage}
+        td #{item.gender}
+        td #{item.isactive}
+        td
+          a.btn.btn-outline-primary(href="/admin/updatetest/"+item._id) Edit

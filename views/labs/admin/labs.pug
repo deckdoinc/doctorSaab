@@ -1,0 +1,30 @@
+extends ../../layout
+
+block content
+  .pb-2.mt-6.mb-12
+    a.btn.btn-primary(href="/admin/addlab") Add Lab
+
+  .row
+    table.table.table-striped.table-hover.table-sm
+     thead
+      tr
+       th(scope='col') Sno
+       th(scope='col') Name
+       th(scope='col') Type
+       th(scope='col') City
+       th(scope='col') Phone
+       th(scope='col') Address
+       th(scope='col') Active
+       th(scope='col')
+     tbody
+      for item, index in labsAttr
+       tr
+        td #{index}
+        td #{item.name}
+        td #{item.labtype}
+        td #{item.city}
+        td #{item.phone}
+        td #{item.address}
+        td #{item.isactive}
+        td
+          a.btn.btn-outline-primary(href="/admin/updatelab/"+item._id) Edit

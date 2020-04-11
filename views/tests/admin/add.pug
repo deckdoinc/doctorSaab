@@ -1,0 +1,49 @@
+extends ../../layout
+
+block content
+	.pb-2.mt-2.mb-4.border-bottom
+		h4 Add Test
+		form(method='POST')
+			input(type='hidden', name='_csrf', value=_csrf)
+			.form-group.row
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='name') Name
+					input.form-control(type='text', name='name', id='name', autocomplete='name', autofocus=true, placeholder="medical name of the test", required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='type') Type
+					input.form-control(type='text', name='type', id='type', autocomplete='type', autofocus=true, placeholder="type - cardio, bones etc", required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='specimen') Specimen
+					input.form-control(type='text', name='specimen', id='specimen', autocomplete='specimen', autofocus=true, placeholder="specimen - thing to collect for test", required)
+				.col-md-3
+					label(class='col-form-label font-weight-bold', for='minage') Min Age
+					<select class="status" data-style="btn-info" name="minage">
+						<option name=#{testAttr.minageselect} value=#{testAttr.minageselect} selected="selected"> #{testAttr.minageselect}</option>
+						each age in testAttr.age
+							<option name=#{age} value=#{age}>#{age}</option>
+					</select>
+				.col-md-3
+					label(class='col-form-label font-weight-bold', for='maxage') Max Age
+					<select class="status" data-style="btn-info" name="maxage">
+						<option name=#{testAttr.maxageselect} value=#{testAttr.maxageselect} selected="selected"> #{testAttr.maxageselect}</option>
+						each age in testAttr.age
+							<option name=#{age} value=#{age}>#{age}</option>
+					</select>
+				.col-md-3
+					label(class='col-form-label font-weight-bold', for='gender') Gender
+					<select class="status" data-style="btn-info" name="gender">
+						<option name=#{testAttr.genderselect} value=#{testAttr.genderselect} selected="selected"> #{testAttr.genderselect}</option>
+						each gender in testAttr.gender
+							<option name=#{gender} value=#{gender}>#{gender}</option>
+					</select>
+				.col-md-3
+					label(class='col-form-label font-weight-bold', for='isactive') Is Active
+					<select class="status" data-style="btn-info" name="isactive">
+						<option name=#{testAttr.isactiveselect} value=#{testAttr.isactiveselect} selected="selected"> #{testAttr.isactiveselect}</option>
+						each status in testAttr.isactive
+							<option name=#{status} value=#{status}>#{status}</option>
+					</select>     
+			.form-group
+				.col-md-10.p-1
+					button.btn.btn-primary(type='submit')
+							| Add Test
