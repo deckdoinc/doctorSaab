@@ -12,3 +12,9 @@ exports.getAddPackage = (req, res) => {
 		title: 'Add Package',
 	});
 }
+
+exports.getPackage = (req, res) => {
+	res.render('package', {
+		title: 'packages',
+	});
+}
