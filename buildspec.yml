@@ -12,7 +12,8 @@ phases:
     commands:
       - echo Installing source NPM dependencies...
       - npm install
-      - npm install -g express --save
+      - npm init
+      - npm i express-generator --save
       - npm install unit.js
   build:
     commands:
