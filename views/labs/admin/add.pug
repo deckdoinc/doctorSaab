@@ -3,6 +3,7 @@ extends ../../layout
 block content
 	.pb-2.mt-2.mb-4.border-bottom
 		h4 Add Lab
+		p #{labAttr}
 		form(method='POST')
 			input(type='hidden', name='_csrf', value=_csrf)
 			.form-group.row
@@ -38,63 +39,28 @@ block content
 					label(class='col-form-label font-weight-bold', for='isactive') Is Active
 					select(class="status" data-style="btn-info" name="isactive")
 						each status in labAttr.isactive
-							option(name=status value=status) status
-			.form-group.row
-				div(class='col-lg-12 md-form active-cyan active-cyan-2 mb-3')
-					input.form-control(type="text" id='searchName' placeholder="Search" aria-label="Search")
+							option(name=status value=status) #{status}
+			//- .form-group.row
+			//- 	input.form-control(type="text" id='searchName' placeholder="Search" aria-label="Search")
+
+
 			.form-group.row
 				table.table
 					thead
 						tr
-							th(scope='col') Names
-							th(scope='col') Specimen
+							th(scope='col') Test Names
 							th(scope='col') Cost Price
 							th(scope='col') Sales Price
 					tbody
-						for test in labAttr.tests
+						for val in [1,2,3,4,5,6,7]
 							tr
+
 								td
-									input.form-control(type='text', name=test.name,  autocomplete='' value=test.name)
+									input.form-control(type="text" class="searchName" placeholder="Search test name" aria-label="Search" name="test" autocomplete='')
 								td
-									input.form-control(type='text', name=test.specimen,  autocomplete='' value=test.specimen)
+									input.form-control(type='text', name="costp",  autocomplete='lab price')
 								td
-									input.form-control(type='text', name=test.cprice,  autocomplete='' value=test.cprice)
-								td
-									input.form-control(type='text', name=test.sprice,  autocomplete='' value=test.sprice)
-						tr
-							td
-								input.form-control(type='text', name="test",  autocomplete='name of test')  
-							td
-								input.form-control(type='text', name="test",  autocomplete='name of test')
-							td
-								input.form-control(type='text', name="test",  autocomplete='name of test')
-							td
-								input.form-control(type='text', name="test",  autocomplete='name of test') 
-						tr
-							td
-								input.form-control(type='text', name="test",  autocomplete='name of test')  
-							td
-								input.form-control(type='text', name="test",  autocomplete='name of test')
-							td
-								input.form-control(type='text', name="test",  autocomplete='name of test')
-							td
-								input.form-control(type='text', name="test",  autocomplete='name of test') 
-						tr
-							td
-								input.form-control(type='text', name="test",  autocomplete='name of test')  
-							td
-								input.form-control(type='text', name="test",  autocomplete='name of test')
-							td
-								input.form-control(type='text', name="test",  autocomplete='name of test')
-							td
-								input.form-control(type='text', name="test",  autocomplete='name of test')          							
-			//- each test in labAttr.tests
-			//- 	.col-md-1
-			//- 		input.form-control(type='text', name='type', id='type', autocomplete='type', autofocus=true, placeholder="type - cardio, bones etc", value=test.name required)
-			//- 	.col-md-1
-			//- 		input.form-control(type='text', name='type', id='type', autocomplete='type', autofocus=true, placeholder="type - cardio, bones etc", value=test.specimen required)
-				//- .col-md-4
-				//- 	input.form-control(type='text', name='specimen', id='specimen', autocomplete='specimen', autofocus=true, value=test.specimen, required)				
+									input.form-control(type='text', name="sellp",  autocomplete='selling price') 			
 			.form-group
 				.col-md-10.p-1
 					button.btn.btn-primary(type='submit')

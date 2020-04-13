@@ -7,23 +7,19 @@ const LabSchema = new mongoose.Schema({
 	city : String,
 	phone: String,
 	email: String,
-	labtype: String,
+	type: String,
 	registration: String,
 	tests: [
 		{
-			_id: String,
 			name: String,
 			specimen: String,
 			type: String,
-			minage: Number,
-			minage: Number,
-			gender: String,
 			cprice: Number,
 			sprice: Number
-		}
+		},
 	],
 	isactive: String
-}, { timestamps: true });
+}, { typeKey: '$type' }, {timestamps: true });
 
 const Lab = mongoose.model('Lab', LabSchema);
 module.exports = Lab;

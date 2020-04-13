@@ -39,20 +39,22 @@ html
       ga('send', 'pageview');
 
     script.
-      $('#searchName').autocomplete({
-        source: function(req, res) {
-          $.ajax({
-            url: "searchtest/",
-            dataType: "jsonp",
-            type:"GET",
-            data: req,
-            success: function(data) {
-              console.log(data);
-            },
-            error: function(err){
-              console.log("I am in error");
-              console.log(err.status);
-            }
-          });
-        }
+      $(function() {
+        $('.searchName').autocomplete({
+          source: function(req, res) {
+            $.ajax({
+              url: "searchtest/",
+              dataType:"jsonp",
+              type:"GET",
+              data: req,
+              success: function(tests) {
+                console.log(tests);
+                res(tests)
+              },
+              error: function(err){
+                console.log(err.status);
+              }
+            });
+          }
+        });
       });

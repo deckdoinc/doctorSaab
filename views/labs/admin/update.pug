@@ -1,0 +1,64 @@
+extends ../../layout
+
+block content
+	.pb-2.mt-2.mb-4.border-bottom
+		h4 Add Lab
+		p #{labAttr}
+		form(method='POST')
+			input(type='hidden', name='_csrf', value=_csrf)
+			.form-group.row
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='name') Name
+					input.form-control(type='text', name='name', id='name', autocomplete='name', autofocus=true, placeholder="name of the lab", required, value=labAttr.name)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='registration') Registration
+					input.form-control(type='text', name='registration', id='registration', autocomplete='address', autofocus=true, placeholder="registration number", required, value=labAttr.registration)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='address') Address
+					input.form-control(type='text', name='address', id='address', autocomplete='address', autofocus=true, placeholder="address of lab", required, value=labAttr.address)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='nearby') Near by
+					input.form-control(type='text', name='nearby', id='nearby', autocomplete='nearby', autofocus=true, placeholder="nearby popular place", value=labAttr.nearby)
+				.col-md-3
+					label(class='col-form-label font-weight-bold', for='city') City
+					select(class="status" data-style="btn-info" name="city")
+						each city in labAttr.cities
+							option(name=city value=city) #{city}
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='phone') Phone
+					input.form-control(type='text', name='phone', id='phone', autocomplete='nearby', autofocus=true, placeholder="phone number", required, value=labAttr.phone)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='email') Email
+					input.form-control(type='text', name='email', id='email', autocomplete='email', autofocus=true, placeholder="email address of lab", required, value=labAttr.email)
+				.col-md-3
+					label(class='col-form-label font-weight-bold', for='labtype') Type
+					select(class="type" data-style="btn-info" name="labtype")
+						each type in labAttr.labtype
+							option(name=type value=type) #{type}
+				.col-md-3
+					label(class='col-form-label font-weight-bold', for='isactive') Is Active
+					select(class="status" data-style="btn-info" name="isactive")
+						each status in labAttr.isactive
+							option(name=status value=status) #{status}
+
+			.form-group.row
+				table.table
+					thead
+						tr
+							th(scope='col') Test Names
+							th(scope='col') Cost Price
+							th(scope='col') Sales Price
+					tbody
+						for val in [1,2,3,4,5,6,7]
+							tr
+
+								td
+									input.form-control(type="text" class="searchName" placeholder="Search test name" aria-label="Search" name="test" autocomplete='')
+								td
+									input.form-control(type='text', name="costp",  autocomplete='lab price')
+								td
+									input.form-control(type='text', name="sellp",  autocomplete='selling price') 			
+			.form-group
+				.col-md-10.p-1
+					button.btn.btn-primary(type='submit')
+							| Add Lab

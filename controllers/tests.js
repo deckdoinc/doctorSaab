@@ -72,25 +72,21 @@ exports.deleteTest = (req, res) => {
 }
 
 exports.getSearchTestList = (req, res) => {
+	console.log("Here");
 	var regex = new RegExp(req.query["term"], 'i');
-	console.log(regex);
-	var tests = Test.find({name: regex},{'name': 1}).sort({"updated_at":-1}).sort({"created_at":-1}).limit(30);
+	var tests = Test.find({name: regex, isactive: 'active'},{'name': 1, 'specimen': 1, '_id' : 1}).sort({"updated_at":-1}).sort({"created_at":-1}).limit(30);
+
 	tests.exec(function(err, data) {
 		var result = [];
 		if(!err) {
 			if(data && data.length && data.length > 0) {
 				data.forEach( test => {
-					let obj = {
-						id:test._id,
-						name: test.name
-					};
-					result.push(obj);
+					result.push(test.name);
 				});
 			}
 
-			res.jsonp()
+			res.jsonp(result);
 		}
-
 
 	})
 

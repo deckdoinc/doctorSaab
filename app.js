@@ -92,7 +92,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use((req, res, next) => {
-  if (req.path === '/api/upload') {
+  if (req.path === '/api/upload' || req.path === '/admin/addlab') {
     // Multer multipart/form-data handling needs to occur before the Lusca CSRF check.
     next();
   } else {
@@ -131,8 +131,6 @@ app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawes
  * Primary app routes.
  */
 app.get('/', homeController.index);
-app.get('/home',homeController.index);
-app.get('/client/pacakages',packageController.getPackage);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
@@ -178,11 +176,12 @@ app.post('/admin/updatetest/:id', testController.postAddUpdate);
 app.get('/admin/labs', labController.getAdminLabs);
 app.get('/admin/addlab', labController.getAddUpdate);
 app.post('/admin/addlab', labController.postAddUpdate);
+app.get('/admin/updatelab/:id', labController.getAddUpdate);
+app.post('/admin/updatelab/:id', labController.getAddUpdate);
 
 app.get('/admin/packages', packageController.getAdminPackages);
 app.get('/admin/addpackage', packageController.getAddPackage);
 app.get('/admin/clients', clientController.getClients);
-
 
 
 /** Company APIs End here

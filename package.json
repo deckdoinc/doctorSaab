@@ -1,7 +1,7 @@
 {
-  "name": "DoctorSaab",
+  "name": "Doctor Saab",
   "version": "1.0.0",
-  "description": "System to facilitate Nepal medical services for US clients",
+  "description": "System to facilitate Nepal medical service for US clients",
   "repository": {
     "type": "git",
     "url": "https://github.com/sahat/hackathon-starter.git"
