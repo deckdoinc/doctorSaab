@@ -12,6 +12,7 @@ phases:
     commands:
       - echo Installing source NPM dependencies...
       - npm install
+      - npm install express
       - npm install unit.js
   build:
     commands:
