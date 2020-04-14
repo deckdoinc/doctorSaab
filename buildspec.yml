@@ -14,6 +14,7 @@ phases:
       - npm install
       - npm install express
       - npm install unit.js
+      - npm install pug -g
   build:
     commands:
       - echo Build started on `date`

@@ -180,6 +180,7 @@ app.get('/admin/updatelab/:id', labController.getAddUpdate);
 app.post('/admin/updatelab/:id', labController.getAddUpdate);
 
 app.get('/admin/packages', packageController.getAdminPackages);
+app.get('/client/packages', packageController.getPackagePage);
 app.get('/admin/addpackage', packageController.getAddPackage);
 app.get('/admin/clients', clientController.getClients);
 
