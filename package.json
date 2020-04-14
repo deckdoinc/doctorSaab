@@ -4,12 +4,12 @@
   "description": "System to facilitate Nepal medical service for US clients",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "git+https://github.com/sahat/hackathon-starter.git"
   },
   "license": "MIT",
   "author": "Amit Dhital",
   "contributors": [
-    "Biwash Bohara "
+    "Biwash Bohara"
   ],
   "scripts": {
     "postinstall": "npm rebuild node-sass",
@@ -91,5 +91,13 @@
   "engines": {
     "node": ">=10.19.0",
     "npm": ">=6.13.4"
+  },
+  "bugs": {
+    "url": "https://github.com/sahat/hackathon-starter/issues"
+  },
+  "homepage": "https://github.com/sahat/hackathon-starter#readme",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
   }
 }

@@ -27,7 +27,6 @@ public/css/main.css
 node_modules
 bower_components
 
-ec2-us-east-1.pem
 
 # Editors
 .idea

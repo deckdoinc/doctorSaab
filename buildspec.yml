@@ -4,7 +4,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 10  
+      nodejs: 12.16.1  
     commands:
       - echo Installing Mocha......
       - npm install -g mocha
@@ -12,6 +12,7 @@ phases:
     commands:
       - echo Installing source NPM dependencies...
       - npm install
+      - npm install express
       - npm install unit.js
   build:
     commands:
@@ -23,18 +24,3 @@ phases:
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
 # ExpressJS apps will need other artifact directories included (bin/*, public/*, routes/*, views/* etc).
-artifacts:
-  files:
-    - .ebextensions/*
-    - app.js
-    - package.json
-    - views/*
-    - static/**/*
-    - node_modules/async/**/*
-    - node_modules/lodash/**/*
-    - node_modules/pug/**/*
-    - node_modules/http/**/*
-    - node_modules/aws-sdk/**/*
-    - node_modules/express/**/*
-    - node_modules/body-parser/**/*
-    - node_modules/querystring/**/*
