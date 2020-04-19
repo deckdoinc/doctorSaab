@@ -18,10 +18,11 @@ block content
        th(scope='col')
      tbody
       for item, index in labsAttr
+       - count = index + 1;
        tr
-        td #{index}
+        td #{count}
         td #{item.name}
-        td #{item.labtype}
+        td #{item.type}
         td #{item.city}
         td #{item.phone}
         td #{item.address}

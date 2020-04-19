@@ -2,9 +2,8 @@ extends ../../layout
 
 block content
 	.pb-2.mt-2.mb-4.border-bottom
-		h4 Add Lab
-		p #{labAttr}
-		form(method='POST')
+		h4 Update Lab
+		form(action='/admin/updatelab/'+labAttr._id method='POST')
 			input(type='hidden', name='_csrf', value=_csrf)
 			.form-group.row
 				.col-md-4
@@ -22,6 +21,7 @@ block content
 				.col-md-3
 					label(class='col-form-label font-weight-bold', for='city') City
 					select(class="status" data-style="btn-info" name="city")
+						option(name=labAttr.scity value=labAttr.scity selected="selected") #{labAttr.scity}
 						each city in labAttr.cities
 							option(name=city value=city) #{city}
 				.col-md-4
@@ -32,12 +32,14 @@ block content
 					input.form-control(type='text', name='email', id='email', autocomplete='email', autofocus=true, placeholder="email address of lab", required, value=labAttr.email)
 				.col-md-3
 					label(class='col-form-label font-weight-bold', for='labtype') Type
-					select(class="type" data-style="btn-info" name="labtype")
+					select(class="type" data-style="btn-info" name="type")
+						option(name=labAttr.slabtype value=labAttr.slabtype selected="selected") #{labAttr.slabtype}
 						each type in labAttr.labtype
 							option(name=type value=type) #{type}
 				.col-md-3
 					label(class='col-form-label font-weight-bold', for='isactive') Is Active
 					select(class="status" data-style="btn-info" name="isactive")
+						option(name=labAttr.sisactive value=labAttr.sisactive selected="selected") #{labAttr.sisactive}
 						each status in labAttr.isactive
 							option(name=status value=status) #{status}
 
@@ -49,7 +51,16 @@ block content
 							th(scope='col') Cost Price
 							th(scope='col') Sales Price
 					tbody
-						for val in [1,2,3,4,5,6,7]
+						for href in labAttr.tests
+							tr
+								td
+									input.form-control(type="text" class="searchName" aria-label="Search" name="test" autocomplete='' value=href.name)
+								td
+									input.form-control(type='text', name="costp",  autocomplete='lab price' value=href.cprice)
+								td
+									input.form-control(type='text', name="sellp",  autocomplete='selling price' value=href.sprice) 									
+
+						for val in [1,2,3,4,5,6,7,8,9,10]
 							tr
 
 								td
@@ -61,4 +72,4 @@ block content
 			.form-group
 				.col-md-10.p-1
 					button.btn.btn-primary(type='submit')
-							| Add Lab
+							| Update Lab

@@ -3,7 +3,6 @@ extends ../../layout
 block content
 	.pb-2.mt-2.mb-4.border-bottom
 		h4 Add Lab
-		p #{labAttr}
 		form(method='POST')
 			input(type='hidden', name='_csrf', value=_csrf)
 			.form-group.row
@@ -32,7 +31,7 @@ block content
 					input.form-control(type='text', name='email', id='email', autocomplete='email', autofocus=true, placeholder="email address of lab", required)
 				.col-md-3
 					label(class='col-form-label font-weight-bold', for='labtype') Type
-					select(class="type" data-style="btn-info" name="labtype")
+					select(class="type" data-style="btn-info" name="type")
 						each type in labAttr.labtype
 							option(name=type value=type) #{type}
 				.col-md-3

@@ -167,7 +167,8 @@ app.get('/api/chart', apiController.getChart);
 
 
 /** Company APIs Start here **/
-app.get('/admin/searchtest/', testController.getSearchTestList);
+app.get('/admin/searchtext/', testController.getSearchTestList);
+app.get('/admin/updatelab/searchtext', testController.getSearchTestList);  
 app.get('/admin/tests', testController.getAdminTests);
 app.get('/admin/addtest', testController.getAddUpdate);
 app.post('/admin/addtest', testController.postAddUpdate);
@@ -177,7 +178,7 @@ app.get('/admin/labs', labController.getAdminLabs);
 app.get('/admin/addlab', labController.getAddUpdate);
 app.post('/admin/addlab', labController.postAddUpdate);
 app.get('/admin/updatelab/:id', labController.getAddUpdate);
-app.post('/admin/updatelab/:id', labController.getAddUpdate);
+app.post('/admin/updatelab/:id', labController.postAddUpdate);
 
 app.get('/admin/packages', packageController.getAdminPackages);
 app.get('/client/packages', packageController.getPackagePage);

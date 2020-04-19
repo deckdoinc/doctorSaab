@@ -18,8 +18,9 @@ block content
        th(scope='col')
      tbody
       for item, index in tests
+       - count = index + 1;
        tr
-        td #{index}
+        td #{count}
         td #{item.name}
         td #{item.type}
         td #{item.specimen}

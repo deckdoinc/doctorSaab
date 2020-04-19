@@ -5,7 +5,7 @@ const Dropdown = require('../helpers/dropdown.json');
 exports.getAdminTests = (req, res) => {
 	Test.find({}, (err, result) => {
 		if (err) throw err;
-		res.render('tests/admin/tests', { tests: result});
+		res.render('tests/admin/tests', { tests: result.reverse()});
 	});
 }
 
@@ -72,10 +72,8 @@ exports.deleteTest = (req, res) => {
 }
 
 exports.getSearchTestList = (req, res) => {
-	console.log("Here");
 	var regex = new RegExp(req.query["term"], 'i');
 	var tests = Test.find({name: regex, isactive: 'active'},{'name': 1, 'specimen': 1, '_id' : 1}).sort({"updated_at":-1}).sort({"created_at":-1}).limit(30);
-
 	tests.exec(function(err, data) {
 		var result = [];
 		if(!err) {

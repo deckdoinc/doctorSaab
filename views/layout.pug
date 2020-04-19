@@ -41,17 +41,17 @@ html
     script.
       $(function() {
         $('.searchName').autocomplete({
-          source: function(req, res) {
+          source: function(letters, res) {
             $.ajax({
-              url: "searchtest/",
+              url: "searchtext/",
               dataType:"jsonp",
               type:"GET",
-              data: req,
+              data: letters,
               success: function(tests) {
-                console.log(tests);
                 res(tests)
               },
               error: function(err){
+                console.log("error happened");
                 console.log(err.status);
               }
             });
