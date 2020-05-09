@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-const Client = new mongoose.Schema({
+const ClientSchema = new mongoose.Schema({
   name: String,
   email: String,
   phone: Number,
   address: {
-    address1: String,
-    address2: String,
+    street: String,
+    apartment: String,
     city: String,
     state: String,
     zipcode: String,
@@ -30,5 +30,5 @@ const Client = new mongoose.Schema({
   ]
 }, { timestamps: true });
 
-
+const Client = mongoose.model('Client', ClientSchema);
 module.exports = Client;

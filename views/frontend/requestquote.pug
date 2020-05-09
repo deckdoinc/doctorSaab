@@ -1,0 +1,43 @@
+extends ../layout
+
+block content
+	h4 Request Quote
+	.pb-2.mt-2.mb-4.border-bottom
+		form(action='/patientdetail' method='POST')
+			input(type='hidden', name='_csrf', value=_csrf)
+			.form-group.row
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='name') Name
+					input.form-control(type='text', name='name', id='name', autocomplete='name', autofocus=true, placeholder="name of the lab", required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='email') Email
+					input.form-control(type='text', name='email', id='email', autocomplete='email', autofocus=true, placeholder="email", required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='phone') Phone
+					input.form-control(type='text', name='phone', id='phone', autocomplete='phone', autofocus=true, placeholder="phone number", required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='street') Address1
+					input.form-control(type='text', name='street', id='street', autocomplete='street', autofocus=true, placeholder="street address")
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='apartment') Apt/Suite
+					input.form-control(type='text', name='apartment', id='apartment', autocomplete='apartment', autofocus=true, placeholder="apartment")
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='city') City
+					input.form-control(type='text', name='city', id='city', autocomplete='city', autofocus=true, placeholder="city", required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='state') State
+					select(class="states" data-style="btn-info" name="state")
+						each state in quoteAttr.usstates
+							option(name=state value=state) #{state}
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='phone') Zip
+					input.form-control(type='text', name='zipcode', id='zipcode', autocomplete='zipcode', autofocus=true, placeholder="zipcode", required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='ttlpatient') Number of Patients
+					select(class="patientcount" data-style="btn-info" name="ttlpatient")
+						each patient in quoteAttr.patientcnt
+							option(name=patient value=patient) #{patient}
+			.form-group
+				.col-md-10.p-1
+					button.btn.btn-primary(type='submit')
+							| Next

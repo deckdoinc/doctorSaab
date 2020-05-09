@@ -167,23 +167,27 @@ app.get('/api/chart', apiController.getChart);
 
 
 /** Company APIs Start here **/
-app.get('/admin/searchtext/', testController.getSearchTestList);
-app.get('/admin/updatelab/searchtext', testController.getSearchTestList);  
-app.get('/admin/tests', testController.getAdminTests);
-app.get('/admin/addtest', testController.getAddUpdate);
-app.post('/admin/addtest', testController.postAddUpdate);
-app.get('/admin/updatetest/:id', testController.getAddUpdate);
-app.post('/admin/updatetest/:id', testController.postAddUpdate);
-app.get('/admin/labs', labController.getAdminLabs);
-app.get('/admin/addlab', labController.getAddUpdate);
-app.post('/admin/addlab', labController.postAddUpdate);
-app.get('/admin/updatelab/:id', labController.getAddUpdate);
-app.post('/admin/updatelab/:id', labController.postAddUpdate);
+app.get('/admin/searchtext/', passportConfig.isAuthenticated, testController.getSearchTestList);
+app.get('/admin/updatelab/searchtext', passportConfig.isAuthenticated, testController.getSearchTestList);  
+app.get('/admin/tests', passportConfig.isAuthenticated, testController.getAdminTests);
+app.get('/admin/addtest', passportConfig.isAuthenticated, testController.getAddUpdate);
+app.post('/admin/addtest', passportConfig.isAuthenticated, testController.postAddUpdate);
+app.get('/admin/updatetest/:id', passportConfig.isAuthenticated, testController.getAddUpdate);
+app.post('/admin/updatetest/:id', passportConfig.isAuthenticated, testController.postAddUpdate);
+app.get('/admin/labs', passportConfig.isAuthenticated, labController.getAdminLabs);
+app.get('/admin/addlab', passportConfig.isAuthenticated, labController.getAddUpdate);
+app.post('/admin/addlab', passportConfig.isAuthenticated, labController.postAddUpdate);
+app.get('/admin/updatelab/:id', passportConfig.isAuthenticated, labController.getAddUpdate);
+app.post('/admin/updatelab/:id', passportConfig.isAuthenticated, labController.postAddUpdate);
 
-app.get('/admin/packages', packageController.getAdminPackages);
+app.get('/admin/packages', passportConfig.isAuthenticated, packageController.getAdminPackages);
 app.get('/client/packages', packageController.getPackagePage);
-app.get('/admin/addpackage', packageController.getAddPackage);
-app.get('/admin/clients', clientController.getClients);
+app.get('/admin/addpackage', passportConfig.isAuthenticated, packageController.getAddPackage);
+
+app.get('/requestquote', clientController.requestQuote);
+app.post('/patientdetail', clientController.getPatientDetail);
+app.post('/submitquote', clientController.postSubmitQuote);
+app.get('/admin/clients', passportConfig.isAuthenticated, clientController.getClientList);
 
 
 /** Company APIs End here

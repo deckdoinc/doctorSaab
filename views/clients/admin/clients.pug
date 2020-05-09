@@ -1,0 +1,31 @@
+extends ../../layout
+
+block content
+  .pb-2.mt-6.mb-12
+    a.btn.btn-primary(href="/requestquote") Add Client
+
+  .row
+    table.table.table-striped.table-hover.table-sm
+     thead
+      tr
+       th(scope='col') Sno
+       th(scope='col') Name
+       th(scope='col') Email
+       th(scope='col') Phone
+       th(scope='col') State
+       th(scope='col') Patients #
+       th(scope='col') Active
+       th(scope='col')
+     tbody
+      for item, index in clientsAttr
+       - count = index + 1;
+       tr
+        td #{count}
+        td #{item.name}
+        td #{item.email}
+        td #{item.phone}
+        td #{item.state}
+        td #{item.ttlpatients}
+        td 
+        td
+          a.btn.btn-outline-primary(href="/admin/updateclient/"+item._id) Edit
