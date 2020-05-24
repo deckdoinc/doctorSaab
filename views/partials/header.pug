@@ -31,10 +31,12 @@
             a.nav-link(href='/admin/tests') Tests
           li.nav-item(class=(title === 'labs') ? 'active' : undefined)
             a.nav-link(href='/admin/labs') Labs
-          li.nav-item(class=(title === 'packages') ? 'active' : undefined)
-            a.nav-link(href='/admin/packages') Packages
+          li.nav-item(class=(title === 'peoples') ? 'active' : undefined)
+            a.nav-link(href='/admin/peoples') Peoples
           li.nav-item(class=(title === 'tests') ? 'active' : undefined)
             a.nav-link(href='/admin/clients') Clients
+          li.nav-item(class=(title === 'tests') ? 'active' : undefined)
+            a.nav-link(href='/admin/patients') Patients
           li.dropdown(class=(title === 'Account Management') ? 'active' : undefined).nav-item
             a.dropdown-toggle.nav-link(href='#', data-toggle='dropdown')
               if user.profile.picture

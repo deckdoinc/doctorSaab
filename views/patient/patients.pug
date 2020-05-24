@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+  .pb-2.mt-6.mb-12
+    a.btn.btn-primary(href="/admin/patient/add") Add Patient
+
+  .row
+    table.table.table-striped.table-hover.table-sm
+     thead
+      tr
+       th(scope='col') Sno
+       th(scope='col') Name
+       th(scope='col') Phone
+       th(scope='col') Address
+       th(scope='col') City
+       th(scope='col') Checkups
+       th(scope='col') Active
+       th(scope='col')
+     tbody
+      for item, index in patientAttr
+       - count = index + 1;
+       tr
+        td #{count}
+        td #{item.name}
+        td #{item.phone}
+        td #{item.address}
+        td #{item.city}
+        td #{item.checkups}
+        td #{item.isactive}
+        td
+          a.btn.btn-outline-primary(href="/admin/patient/update/"+item._id) Edit

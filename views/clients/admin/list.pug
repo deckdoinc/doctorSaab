@@ -14,7 +14,7 @@ block content
        th(scope='col') Phone
        th(scope='col') State
        th(scope='col') Patients #
-       th(scope='col') Active
+       th(scope='col') Status
        th(scope='col')
      tbody
       for item, index in clientsAttr
@@ -26,6 +26,6 @@ block content
         td #{item.phone}
         td #{item.state}
         td #{item.ttlpatients}
-        td 
+        td #{item.status}
         td
           a.btn.btn-outline-primary(href="/admin/updateclient/"+item._id) Edit

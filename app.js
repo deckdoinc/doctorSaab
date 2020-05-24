@@ -37,6 +37,8 @@ const clientController = require('./controllers/clients');
 const packageController = require('./controllers/packages');
 const testController = require('./controllers/tests');
 const labController = require('./controllers/labs');
+const patientController = require('./controllers/patients');
+const peopleController = require('./controllers/peoples');
 
 /**
  * API keys and Passport configuration.
@@ -188,8 +190,24 @@ app.get('/requestquote', clientController.requestQuote);
 app.post('/patientdetail', clientController.getPatientDetail);
 app.post('/submitquote', clientController.postSubmitQuote);
 app.get('/admin/clients', passportConfig.isAuthenticated, clientController.getClientList);
+app.get('/admin/updateclient/:id', passportConfig.isAuthenticated, clientController.getClientDetail);
 
 
+app.post('/admin/patient/create', passportConfig.isAuthenticated, patientController.postCreatePatient);
+app.get('/admin/patient/create', passportConfig.isAuthenticated, patientController.getCreatePatient);
+app.get('/admin/patient/add', passportConfig.isAuthenticated, patientController.getAddPatient);
+app.post('/admin/patient/add', passportConfig.isAuthenticated, patientController.postAddPatient);
+app.get('/admin/patient/update/:id', passportConfig.isAuthenticated, patientController.getUpdatePatient);
+app.post('/admin/patient/update/:id', passportConfig.isAuthenticated, patientController.postUpdatePatient);
+app.get('/admin/patients', passportConfig.isAuthenticated, patientController.getPatientList);
+
+//Peoples
+app.get('/admin/people/add', passportConfig.isAuthenticated, peopleController.getAddPeople);
+app.post('/admin/people/add', passportConfig.isAuthenticated, peopleController.postAddPeople);
+app.get('/admin/peoples', passportConfig.isAuthenticated, peopleController.getPeopleList);
+
+//Emails
+app.get('/quote-email', homeController.getTestEmail)
 /** Company APIs End here
 
 

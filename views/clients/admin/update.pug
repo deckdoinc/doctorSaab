@@ -1,0 +1,165 @@
+extends ../../layout
+
+block content
+	- clientHref = clientAttr.client
+	- patientAref = clientAttr.patients
+	h4 Update Client: #{clientHref.name.first} #{clientHref.name.last}
+	.pb-2.mt-2.mb-4.border-bottom
+		form(action='/submitquote' method='POST')
+			input(type='hidden', name='_csrf', value=_csrf)
+			.form-group.row
+				.col-md-12
+						label(class='col-form-label font-weight-bold', for='status') Status
+						select(class="status" data-style="btn-info" name="status")
+							each status in clientHref.statusclient
+								option(name=status value=status) #{status}
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='firtstname') First Name
+					input.form-control(type='text', name='firstname', id='firstname', autocomplete='firstname', autofocus=true, placeholder="first name of patient", value=clientHref.name.first)
+
+
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='middlename') Middle Name
+					input.form-control(type='text', name='middlename', id='middlename', autocomplete='middlename', autofocus=true, placeholder="name of the patient" value=clientHref.name.middle)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='name') Last Name
+					input.form-control(type='text', name='name', id='name', autocomplete='name', autofocus=true, placeholder="last name", value=clientHref.name.last)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='email') Last Name
+					input.form-control(type='text', name='email', id='email', autocomplete='email', autofocus=true, placeholder="email address of patient", value=clientHref.name.last)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='phone') Phone
+					input.form-control(type='text', name='phone', id='phone', autocomplete='phone', autofocus=true, value=clientHref.phone)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='dob') DOB
+					input.form-control(type='date', name='dob', id='dob', autocomplete='dob', placeholder="Date of Birth", value=clientHref.dob)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='street') Address1
+					input.form-control(type='text', name='street', id='street', autocomplete='street', autofocus=true, placeholder="street address", value=clientHref.address.street)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='apartment') Apt/Suite
+					input.form-control(type='text', name='apartment', id='apartment', autocomplete='apartment', autofocus=true, placeholder="apartment", value=clientHref.address.apartment)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='city') City
+					input.form-control(type='text', name='city', id='city', autocomplete='city', autofocus=true, placeholder="city", required, value=clientHref.address.city)
+				//- .col-md-4
+				//- 	label(class='col-form-label font-weight-bold', for='state') State
+				//- 	select(class="states" data-style="btn-info" name="state")
+				//- 		each state in clientHref.usstates
+				//- 			option(name=state value=state) #{state}
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='zipcode') Zip
+					input.form-control(type='text', name='zipcode', id='zipcode', autocomplete='zipcode', autofocus=true, placeholder="zipcode", required, value=clientHref.address.zipcode)
+
+			.form-group
+				.col-md-10.p-1
+					button.btn.btn-primary(type='submit')
+						| Update Client
+
+
+		h2 Patients
+		for item, index in patientAref
+			div(class="client-patient-form")
+				form(action='/admin/patient/create' method='POST')
+					input(type='hidden', name='_csrf', value=_csrf)
+					input(type='hidden', name='client_id', value=clientHref._id)
+					.form-group.row
+						.col-md-4
+							label(class='col-form-label font-weight-bold', for='firtstname') First Name
+							input.form-control(type='text', name='firstname', id='firstname', autocomplete='firstname', autofocus=true, placeholder="first name of patient", value=item.href.name.first)
+						.col-md-4
+							label(class='col-form-label font-weight-bold', for='middlename') Middle Name
+							input.form-control(type='text', name='middlename', id='middlename', autocomplete='middlename', autofocus=true, placeholder="name of the patient", value=item.href.name.middle)
+						.col-md-4
+							label(class='col-form-label font-weight-bold', for='lastname') Last Name
+							input.form-control(type='text', name='lastname', id='lastname', autocomplete='name', autofocus=true, placeholder="name of the patient", required, value=item.href.name.last)
+						.col-md-4
+							label(class='col-form-label font-weight-bold', for='phone') Phone
+							input.form-control(type='text', name='phone', id='phone', autocomplete='phone', autofocus=true, placeholder="phone", value=item.href.phone)
+						.col-md-4
+							label(class='col-form-label font-weight-bold', for='dob') DOB
+							input.form-control(type='date', name='dob', id='dob', autocomplete='dob', placeholder="Date of birth of patient", value=item.href.dob)
+						.col-md-4
+							label(class='col-form-label font-weight-bold', for='address') Address
+							input.form-control(type='text', name='address', id='address', autocomplete='address', autofocus=true, placeholder="address", value=item.href.address)
+						.col-md-4
+							label(class='col-form-label font-weight-bold', for='popularplc') Popular Nearby
+							input.form-control(type='text', name='popularplc', id='popularplc', autocomplete='popularplc', autofocus=true, placeholder="popular place Nearby", value=item.href.nearby)
+						.col-md-4
+							label(class='col-form-label font-weight-bold', for='city') City
+							input.form-control(type='text', name='city', id='city', autocomplete='city', autofocus=true, placeholder="city", value=item.href.city)
+						//- .col-md-4
+						//- 	label(class='col-form-label font-weight-bold', for='gender') Gender
+						//- 	select(class="patientcount" data-style="btn-info" name="gender")
+						//- 		each gender in clientAttr.gender
+						//- 			option(name=gender value=gender) #{gender}
+					.form-group
+						.col-md-10.p-1
+							button.btn.btn-primary(type='submit')
+								| Create Patient
+
+
+
+
+
+
+
+
+			//- while i <  clientHref.ttlpatients
+			//- 	- var patientAttr = clientHref.patients[i]
+			//- 	.form-group.row
+			//- 		.col-md-4
+			//- 			label(class='col-form-label font-weight-bold', for='firtstname') First Name
+			//- 			input.form-control(type='text', name='firstname', id='firstname', autocomplete='firstname', autofocus=true, placeholder="first name of patient", value=patientAttr.name.first)
+			//- 		.col-md-4
+			//- 			label(class='col-form-label font-weight-bold', for='middlename') Middle Name
+			//- 			input.form-control(type='text', name='middlename', id='middlename', autocomplete='middlename', autofocus=true, placeholder="name of the patient" value=patientAttr.name.middle)
+			//- 		.col-md-4
+			//- 			label(class='col-form-label font-weight-bold', for='name') Last Name
+			//- 			input.form-control(type='text', name='name', id='name', autocomplete='name', autofocus=true, placeholder="last name", value=patientAttr.name.last)
+			//- 		.col-md-4
+			//- 	.col-md-4
+			//- 		label(class='col-form-label font-weight-bold', for='gender') Gender
+			//- 		select(class="patientcount" data-style="btn-info" name="gender")
+			//- 			each gender in clientHref.genderdd
+			//- 				option(name=gender value=gender) #{gender}
+			//- 	hr(class="mt-5 mb-5")
+			//- 	- i++;
+
+			//- .form-group.row
+			//- 	table.table
+			//- 		thead
+			//- 			tr
+			//- 				th(scope='col') Name
+			//- 				th(scope='col') Match Link
+			//- 				th(scope='col') Button
+			//- 		tbody
+			//- 			for item, index in patientAref
+			//- 				- var customerHref = item.href
+			//- 				tr
+			//- 					td
+			//- 						input.form-control(type="text" class="name" aria-label="name" name="name" autocomplete='' value=customerHref.name.first)
+								
+			//- 					if item.matched == 1	
+			//- 						td
+			//- 							a(class="name" href="/admin/patient/edit"+item.patientid) #{item.fullname}
+			//- 						td
+			//- 							a.btn.btn-outline-success(href="/admin/patient/edit"+item.patient_id) Verify Match
+
+			//- 					else	
+			//- 						td
+			//- 							p no match
+			//- 							input(type='hidden', name='clientfirstname' value=customerHref.name.first)
+			//- 							input(type='hidden', name='clientmiddlename' value=customerHref.name.middle)
+			//- 							input(type='hidden', name='clientlastname' value=customerHref.name.last)
+			//- 							input(type='hidden', name='clientemail' value=customerHref.email)
+			//- 							input(type='hidden', name='clientphone' value=customerHref.phone)
+			//- 							input(type='hidden', name='patientdob' value=clientHref.dob)
+			//- 							input(type='hidden', name='patientgender' value=customerHref.gender)
+			//- 							//- input(type='hidden', name='patientaddress' value=customerHref.address.address)
+			//- 							//- input(type='hidden', name='patientnearby' value=customerHref.address.nearby)
+			//- 							//- input(type='hidden', name='patientcity' value=customerHref.address.city)
+			//- 							//- input(type='hidden', name='patientstate' value=customerHref.address.state)						
+			//- 						td
+			//- 							a.btn.btn-outline-primary(href="/admin/patient/add/"+customerHref.name.first) Create Patient
+

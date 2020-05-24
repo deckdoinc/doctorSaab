@@ -1,0 +1,40 @@
+extends ../layout
+
+block content
+	.pb-2.mt-2.mb-4.border-bottom
+		h4 Add Patient
+		form(action='/admin/patient/add' method='POST')
+			input(type='hidden', name='_csrf', value=_csrf)
+			input(type='hidden', name='clientid', value=_csrf)
+			.form-group.row
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='firtstname') First Name
+					input.form-control(type='text', name='firstname', id='firstname', autocomplete='firstname', autofocus=true, placeholder="first name of patient" value=patientAttr.firstname)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='middlename') Middle Name
+					input.form-control(type='text', name='middlename', id='middlename', autocomplete='middlename', autofocus=true, placeholder="name of the patient", value=patientAttr.middlename)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='lastname') Last Name
+					input.form-control(type='text', name='lastname', id='lastname', autocomplete='name', autofocus=true, placeholder="name of the patient", required, value=patientAttr.lastname)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='phone') Phone
+					input.form-control(type='text', name='phone', id='phone', autocomplete='phone', autofocus=true, placeholder="phone", value=patientAttr.phone)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='email') Email
+					input.form-control(type='text', name='email', id='email', autocomplete='email', autofocus=true, placeholder="emailaddress", value=patientAttr.email)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='dob') DOB
+					input.form-control(type='date', name='dob', id='dob', autocomplete='dob', placeholder="Date of birth of patient", value=patientAttr.dob)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='address') Address
+					input.form-control(type='text', name='address', id='address', autocomplete='address', autofocus=true, placeholder="address", value=patientAttr.address)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='popularplc') Popular Nearby
+					input.form-control(type='text', name='popularplc', id='popularplc', autocomplete='popularplc', autofocus=true, placeholder="popular place Nearby", value=patientAttr.nearby)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='city') City
+					input.form-control(type='text', name='city', id='city', autocomplete='city', autofocus=true, placeholder="city", value=patientAttr.city)
+			.form-group
+				.col-md-10.p-1
+					button.btn.btn-primary(type='submit')
+						| Add Patient

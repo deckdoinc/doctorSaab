@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 
 const ClientSchema = new mongoose.Schema({
-  name: String,
+  name : {
+    first: String,
+    middle: String,
+    last: String
+  },
+
   email: String,
   phone: Number,
   address: {
@@ -10,22 +15,35 @@ const ClientSchema = new mongoose.Schema({
     city: String,
     state: String,
     zipcode: String,
+    country: String
   },
 
+  status: String,
   patients : [
     {
-      name: String,
+      name: {
+        first: String,
+        middle: String,
+        last: String
+      },
+
+      match: String,
       phone: Number,
-      age  : Number,
+      dob  : Date,
       gender : String,
       address: String,
       nearby : String,
-      city   : String,
-      packages: [{
-        type : String,
-        name : String,
-        city : String
-      }]
+      city   : String
+    }
+  ],
+
+  payments: [
+    { 
+      type: String,
+      payee: String,
+      date: Date,
+      amount: Number,
+      dollrate: Number
     }
   ]
 }, { timestamps: true });

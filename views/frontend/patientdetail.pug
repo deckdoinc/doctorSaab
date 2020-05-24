@@ -5,29 +5,36 @@ block content
 	.pb-2.mt-2.mb-4.border-bottom
 		form(action='/submitquote' method='POST')
 			input(type='hidden', name='_csrf', value=_csrf)
-			input(type='hidden', name='clientname' value=clientAttr.name)
+			input(type='hidden', name='clientfirstname' value=clientAttr.firstname)
+			input(type='hidden', name='clientmiddlename' value=clientAttr.middlename)
+			input(type='hidden', name='clientlastname' value=clientAttr.lastname)
 			input(type='hidden', name='clientemail' value=clientAttr.email)
 			input(type='hidden', name='clientphone' value=clientAttr.phone)
 			input(type='hidden', name='clientstreet' value=clientAttr.street)
 			input(type='hidden', name='clientapartment' value=clientAttr.apartment)
 			input(type='hidden', name='clientcity' value=clientAttr.city)
 			input(type='hidden', name='clientstate' value=clientAttr.state)
+			input(type='hidden', name='clientstatus' value=clientAttr.status)
 			input(type='hidden', name='clientzipcode' value=clientAttr.zipcode)
 
 			- var i = 0;
 			while i <  clientAttr.ttlpatient
 				.form-group.row
 					.col-md-4
-						label(class='col-form-label font-weight-bold', for='name') Full Name
-						input.form-control(type='text', name='name', id='name', autocomplete='name', autofocus=true, placeholder="name of the lab")
+						label(class='col-form-label font-weight-bold', for='firtstname') First Name
+						input.form-control(type='text', name='firstname', id='firstname', autocomplete='firstname', autofocus=true, placeholder="first name of patient", required)
+					.col-md-4
+						label(class='col-form-label font-weight-bold', for='middlename') Middle Name
+						input.form-control(type='text', name='middlename', id='middlename', autocomplete='middlename', autofocus=true, placeholder="name of the patient")
+					.col-md-4
+						label(class='col-form-label font-weight-bold', for='lastname') Last Name
+						input.form-control(type='text', name='lastname', id='lastname', autocomplete='name', autofocus=true, placeholder="name of the patient", required)
 					.col-md-4
 						label(class='col-form-label font-weight-bold', for='phone') Phone
 						input.form-control(type='text', name='phone', id='phone', autocomplete='phone', autofocus=true, placeholder="phone")
 					.col-md-4
-						label(class='col-form-label font-weight-bold', for='age') Patient Age
-						select(class="patientcount" data-style="btn-info" name="age")
-							each age in clientAttr.age
-								option(name=age value=age) #{age}
+						label(class='col-form-label font-weight-bold', for='dob') DOB
+						input.form-control(type='date', name='dob', id='dob', autocomplete='dob', placeholder="Date of birth of patient")
 					.col-md-4
 						label(class='col-form-label font-weight-bold', for='address') Address
 						input.form-control(type='text', name='address', id='address', autocomplete='address', autofocus=true, placeholder="address")

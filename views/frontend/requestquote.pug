@@ -7,8 +7,14 @@ block content
 			input(type='hidden', name='_csrf', value=_csrf)
 			.form-group.row
 				.col-md-4
-					label(class='col-form-label font-weight-bold', for='name') Name
-					input.form-control(type='text', name='name', id='name', autocomplete='name', autofocus=true, placeholder="name of the lab", required)
+					label(class='col-form-label font-weight-bold', for='firstname') First Name
+					input.form-control(type='text', name='firstname', id='firstname', autocomplete='firstname', autofocus=true, placeholder="first name", required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='middlename') Mid Name
+					input.form-control(type='text', name='middlename', id='middlename', autocomplete='middlename', autofocus=true, placeholder="middle Name")
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='lastname') Last Name
+					input.form-control(type='text', name='lastname', id='lastname', autocomplete='lastname', autofocus=true, placeholder="lastname", required)
 				.col-md-4
 					label(class='col-form-label font-weight-bold', for='email') Email
 					input.form-control(type='text', name='email', id='email', autocomplete='email', autofocus=true, placeholder="email", required)
@@ -17,7 +23,7 @@ block content
 					input.form-control(type='text', name='phone', id='phone', autocomplete='phone', autofocus=true, placeholder="phone number", required)
 				.col-md-4
 					label(class='col-form-label font-weight-bold', for='street') Address1
-					input.form-control(type='text', name='street', id='street', autocomplete='street', autofocus=true, placeholder="street address")
+					input.form-control(type='text', name='street', id='street', autocomplete='street', autofocus=true, placeholder="street address", required)
 				.col-md-4
 					label(class='col-form-label font-weight-bold', for='apartment') Apt/Suite
 					input.form-control(type='text', name='apartment', id='apartment', autocomplete='apartment', autofocus=true, placeholder="apartment")
@@ -30,7 +36,7 @@ block content
 						each state in quoteAttr.usstates
 							option(name=state value=state) #{state}
 				.col-md-4
-					label(class='col-form-label font-weight-bold', for='phone') Zip
+					label(class='col-form-label font-weight-bold', for='zipcode') Zip
 					input.form-control(type='text', name='zipcode', id='zipcode', autocomplete='zipcode', autofocus=true, placeholder="zipcode", required)
 				.col-md-4
 					label(class='col-form-label font-weight-bold', for='ttlpatient') Number of Patients
