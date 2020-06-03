@@ -1,0 +1,79 @@
+extends ../layout
+
+block content
+	.pb-2.mt-2.mb-4.border-bottom
+		h4 Add Medical Person
+		form(action='/admin/people/update/'+peopleAttr._id method='POST')
+			input(type='hidden', name='_csrf', value=_csrf)
+			.form-group.row
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='firstname') First Name
+					input.form-control(type='text', name='firstname', id='firstname', autocomplete='firstname', autofocus=true, placeholder="First name", value=peopleAttr.name.first, required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='middlename') Middle Name
+					input.form-control(type='text', name='middlename', id='middlename', autocomplete='middlename', autofocus=true, placeholder="Middle name", value=peopleAttr.name.middle)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='lastname') Last Name
+					input.form-control(type='text', name='lastname', id='lastname', autocomplete='lastname', autofocus=true, placeholder="Last name", value=peopleAttr.name.last, required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='email') Email
+					input.form-control(type='text', name='email', id='email', autocomplete='email', autofocus=true, placeholder="Email", value=peopleAttr.email, required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='phone') Phone
+					input.form-control(type='text', name='phone', id='phone', autocomplete='phone', autofocus=true, placeholder="Email", value=peopleAttr.phone, required)
+
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='type') Gender
+					select(class="status" data-style="btn-info" name="gender")
+						option(name=gender value=peopleAttr.gender) #{peopleAttr.gender}
+						each gender in peopleAttr.genders
+							option(name=gender value=gender) #{gender}
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='type') Type
+					select(class="status" data-style="btn-info" name="type")
+						option(name=type value=peopleAttr.type) #{peopleAttr.type}
+						each type in peopleAttr.peopletypes
+							option(name=type value=type) #{type}
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='profession') Profession
+					input.form-control(type='text', name='profession', id='profession', autocomplete='profession', autofocus=true, placeholder="Profession", value=peopleAttr.profession)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='organization') Organization
+					input.form-control(type='text', name='organization', id='organization', autocomplete='organization', autofocus=true, placeholder="Organization working for", value=peopleAttr.organization)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='education') Education
+					input.form-control(type='text', name='education', id='education', autocomplete='education', autofocus=true, placeholder="Education of Medical personnel", value=peopleAttr.education)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='licensenumber') License#
+					input.form-control(type='text', name='licensenumber', id='licensenumber', autocomplete='licensenumber', autofocus=true, placeholder="Medical License Number", value=peopleAttr.licensenumber)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='description') Description
+					textarea.form-control(type='text-area', name='description', id='description', autocomplete='description', autofocus=true, placeholder="Description about medical personnel") #{peopleAttr.description}
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='address') Address
+					input.form-control(type='text', name='address', id='address', autocomplete='address', autofocus=true, placeholder="address of lab", required, value=peopleAttr.address.address)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='nearby') Near by
+					input.form-control(type='text', name='nearby', id='nearby', autocomplete='nearby', autofocus=true, placeholder="nearby popular place", value=peopleAttr.address.nearby)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='city') City
+					select(class="status" data-style="btn-info" name="city")
+						option(name=city value=peopleAttr.address.city) #{peopleAttr.address.city}
+						each city in peopleAttr.cities
+							option(name=city value=city) #{city}
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='state') State
+					input.form-control(type='text', name='state', id='state', autocomplete='state', autofocus=true, placeholder="State", value=peopleAttr.address.state)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='zipcode') Zipcode
+					input.form-control(type='text', name='zipcode', id='zipcode', autocomplete='zipcode', autofocus=true, placeholder="Postal/Zip code", value=peopleAttr.address.zipcode)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='status') Is Active
+					select(class="status" data-style="btn-info" name="status")
+						option(name=city value=peopleAttr.status) #{peopleAttr.status}
+						each status in peopleAttr.isactive
+							option(name=status value=status) #{status}		
+			.form-group
+				.col-md-10.p-1
+					button.btn.btn-primary(type='submit')
+							| Update Person

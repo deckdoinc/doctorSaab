@@ -23,21 +23,21 @@ block content
 					label(class='col-form-label font-weight-bold', for='minage') Min Age
 					<select class="status" data-style="btn-info" name="minage">
 						<option name=#{testAttr.minageselect} value=#{testAttr.minageselect} selected="selected"> #{testAttr.minageselect}</option>
-						each age in testAttr.age
+						each age in testAttr.ages
 							<option name=#{age} value=#{age}>#{age}</option>
 					</select>
 				.col-md-3
 					label(class='col-form-label font-weight-bold', for='maxage') Max Age
 					<select class="status" data-style="btn-info" name="maxage">
 						<option name=#{testAttr.maxageselect} value=#{testAttr.maxageselect} selected="selected"> #{testAttr.maxageselect}</option>
-						each age in testAttr.age
+						each age in testAttr.ages
 							<option name=#{age} value=#{age}>#{age}</option>
 					</select>
 				.col-md-3
 					label(class='col-form-label font-weight-bold', for='gender') Gender
 					<select class="status" data-style="btn-info" name="gender">
 						<option name=#{testAttr.genderselect} value=#{testAttr.genderselect} selected="selected"> #{testAttr.genderselect}</option>
-						each gender in testAttr.gender
+						each gender in testAttr.genders
 							<option name=#{gender} value=#{gender}>#{gender}</option>
 					</select>
 				.col-md-3

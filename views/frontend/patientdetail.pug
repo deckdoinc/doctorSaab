@@ -47,7 +47,7 @@ block content
 					.col-md-4
 						label(class='col-form-label font-weight-bold', for='gender') Gender
 						select(class="patientcount" data-style="btn-info" name="gender")
-							each gender in clientAttr.gender
+							each gender in clientAttr.genders
 								option(name=gender value=gender) #{gender}
 					hr(class="mt-5 mb-5")
 				- i++;

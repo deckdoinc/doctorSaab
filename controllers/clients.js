@@ -55,10 +55,10 @@ exports.getClientDetail = (req, res) => {
 
 exports.getPatientDetail = (req, res) => {
 	let output = req.body;
-	output['age'] = Dropdown.age;
-	output['gender'] = Dropdown.gender;
+	output['ages'] = Dropdown.ages;
+	output['genders'] = Dropdown.genders;
 	output['status'] = "quoterequest"; // First time request submitted.
-	res.render('frontend/patientdetail', {clientHref: output});
+	res.render('frontend/patientdetail', {clientAttr: output});
 }
 
 exports.postSubmitQuote = (req, res) => {

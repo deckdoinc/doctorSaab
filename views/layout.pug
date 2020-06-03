@@ -48,6 +48,7 @@ html
               type:"GET",
               data: letters,
               success: function(tests) {
+                console.log(tests);
                 res(tests)
               },
               error: function(err){

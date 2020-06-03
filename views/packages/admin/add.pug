@@ -1,0 +1,70 @@
+extends ../../layout
+
+block content
+	.pb-2.mt-2.mb-4.border-bottom
+		h4 Add Package
+		form(method='POST')
+			input(type='hidden', name='_csrf', value=_csrf)
+			.form-group.row
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='name') Name
+					input.form-control(type='text', name='name', id='name', autocomplete='name', autofocus=true, placeholder="name of the package", required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='middlename') Description
+					textarea.form-control(type='text-area', name='description', id='description', autocomplete='description', autofocus=true, placeholder="Description of package if any")
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='type') Type
+					select(class="status" data-style="btn-info" name="type")
+						each type in packageAttr.packagetypes
+							option(name=type value=type) #{type}
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='gender') Gender
+					select(class="status" data-style="btn-info" name="gender")
+						each gender in packageAttr.genders
+							option(name=gender value=gender) #{gender}
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='type') Min age
+					select(class="status" data-style="btn-info" name="minage")
+						each age in packageAttr.ages
+							option(name=age value=age) #{age}
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='type') Max age
+					select(class="status" data-style="btn-info" name="maxage")
+						each age in packageAttr.ages
+							option(name=age value=age) #{age}
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='startdate') Start
+					input.form-control(type='date', name='startdate', id='startdate', autocomplete='startdate')
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='enddate') End
+					input.form-control(type='date', name='enddate', id='enddate', autocomplete='enddate')
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='name') Price
+					input.form-control(type='text', name='price', id='price', autocomplete='price', autofocus=true, placeholder="Price of package", required)
+				.col-md-4
+					label(class='col-form-label font-weight-bold', for='notes') Notes
+					textarea.form-control(type='text-area', name='notes', id='notes', autocomplete='notes', autofocus=true, placeholder="Notes on package if any")
+				.col-md-12
+					label(class='col-form-label font-weight-bold', for='city') Cities
+					each city in packageAttr.citiesdd
+						input(type='checkbox', name='city', autocomplete='city', autofocus=true, checked="checked", value=city)
+						label(class='col-form-label' for='city') #{city}
+			.form-group.row
+				table.table
+					thead
+						tr
+							th(scope='col') Test Names
+							th(scope='col') Price
+					tbody
+						for val in [1,2,3,4,5,6,7,8,9,10]
+							tr
+
+								td
+									input.form-control(type="text" class="searchName" placeholder="Search test name" aria-label="Search" name="test" autocomplete='')
+								td
+									input.form-control(type='text', name="testp",  autocomplete='test price')
+
+			.form-group
+				.col-md-10.p-1
+					button.btn.btn-primary(type='submit')
+							| Add Package

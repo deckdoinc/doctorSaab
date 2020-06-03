@@ -1,0 +1,31 @@
+extends ../../layout
+
+block content
+  .pb-2.mt-6.mb-12
+    a.btn.btn-primary(href="/admin/package/add") Add Package
+
+  .row
+    table.table.table-striped.table-hover.table-sm
+     thead
+      tr
+       th(scope='col') Sno
+       th(scope='col') Name
+       th(scope='col') Type
+       th(scope='col') Start
+       th(scope='col') End
+       th(scope='col') Price
+       th(scope='col') Tests#
+       th(scope='col') Actions
+     tbody
+      for item, index in packageAttr
+       - count = index + 1;
+       tr
+        td #{count}
+        td #{item.name} 
+        td #{item.type}
+        td #{item.startdate}
+        td #{item.enddate}
+        td #{item.price}
+        td #{item.ttltests}
+        td
+          a.btn.btn-outline-primary(href="/admin/package/update/"+item._id) Edit

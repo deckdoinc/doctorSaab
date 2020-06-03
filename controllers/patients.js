@@ -1,5 +1,7 @@
 const Client = require('../models/Client');
 const Patient = require('../models/Patient');
+const Package = require('../models/Package');
+const People = require('../models/People');
 const Dropdown = require('../helpers/dropdown.json');
 const utils = require('../emails/utils');
 const Email = require('email-templates');
@@ -54,10 +56,16 @@ exports.getAddPatient = (req, res) => {
 }
 
 exports.getUpdatePatient = (req, res) => {
-	console.log(req.params.id);
+	var output = {};
 	Patient.findById(req.params.id, (err, result) => {
-		console.log(result);
-		res.render('patient/update', {patientAttr: result});
+		if(err) throw err;
+		output.patient = result;
+		Package.find({}, (err, result) => {
+			if(err) throw err;
+			output.packages = result;
+
+			res.render('patient/update', {outAttr : output});
+		}); 
 	}); 
 }
 

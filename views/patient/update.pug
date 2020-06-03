@@ -1,11 +1,11 @@
 extends ../layout
 
 block content
+	- var patientAttr = outAttr.patient;
 	.pb-2.mt-2.mb-4.border-bottom
-		h4 Add Patient
-		form(action='/admin/patient/update' method='POST')
+		h4 Update Patient: #{patientAttr.name.first} #{patientAttr.name.last}
+		form(action='/admin/people/update' method='POST')
 			input(type='hidden', name='_csrf', value=_csrf)
-			input(type='hidden', name='clientid', value=_csrf)
 			.form-group.row
 				.col-md-4
 					label(class='col-form-label font-weight-bold', for='firtstname') First Name
@@ -34,6 +34,40 @@ block content
 				.col-md-4
 					label(class='col-form-label font-weight-bold', for='city') City
 					input.form-control(type='text', name='city', id='city', autocomplete='city', autofocus=true, placeholder="city", value=patientAttr.address.city)
+				.col-md-12
+					label(class='col-form-label font-weight-bold', for='packages') Packages
+					<br>
+					each href in outAttr.packages
+						input(type='checkbox', name='package', autocomplete='package', autofocus=true, checked="checked", value=href.name)
+						label(class='col-form-label' for='city') #{href.name}
+						<br>
+			.form-group.row
+				h3 People Assigned
+				table.table
+					thead
+						tr
+							th(scope='col') Name
+							th(scope='col') Payment
+							th(scope='col') Notes
+					tbody
+						for val in [1,2,3]
+							tr
+
+								td
+									input.form-control(type="text" class="searchName" placeholder="Search medical officer" aria-label="Search" name="test" autocomplete='')
+								td
+									input.form-control(type='text', name="payment",  autocomplete='payment amount')
+								td
+									textarea.form-control(name="notes",  autocomplete='payment amount')
+			.form-group.row
+					.col-md-12
+						label(class='col-form-label font-weight-bold', for='supply') Supply used
+						textarea.form-control(type='text-area', name='supply', id='supply', autocomplete='supply', autofocus=true, placeholder="Add any supplies used during process") 
+					.col-md-6
+						label(class='col-form-label font-weight-bold', for='expenses') Expenses
+						input.form-control(type='text', name='expenses', id='expenses', autocomplete='expenses', autofocus=true, placeholder="any extra expenses incurred")
+
+
 			.form-group
 				.col-md-10.p-1
 					button.btn.btn-primary(type='submit')

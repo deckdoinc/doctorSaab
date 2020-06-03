@@ -41,7 +41,7 @@ block content
 				.col-md-4
 					label(class='col-form-label font-weight-bold', for='ttlpatient') Number of Patients
 					select(class="patientcount" data-style="btn-info" name="ttlpatient")
-						each patient in quoteAttr.patientcnt
+						each patient in quoteAttr.patientcnts
 							option(name=patient value=patient) #{patient}
 			.form-group
 				.col-md-10.p-1

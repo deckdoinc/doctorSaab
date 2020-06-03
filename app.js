@@ -171,6 +171,8 @@ app.get('/api/chart', apiController.getChart);
 /** Company APIs Start here **/
 app.get('/admin/searchtext/', passportConfig.isAuthenticated, testController.getSearchTestList);
 app.get('/admin/updatelab/searchtext', passportConfig.isAuthenticated, testController.getSearchTestList);  
+app.get('/admin/package/searchtext', passportConfig.isAuthenticated, testController.getSearchTestList);
+app.get('/admin/package/update/searchtext', passportConfig.isAuthenticated, testController.getSearchTestList);
 app.get('/admin/tests', passportConfig.isAuthenticated, testController.getAdminTests);
 app.get('/admin/addtest', passportConfig.isAuthenticated, testController.getAddUpdate);
 app.post('/admin/addtest', passportConfig.isAuthenticated, testController.postAddUpdate);
@@ -184,7 +186,11 @@ app.post('/admin/updatelab/:id', passportConfig.isAuthenticated, labController.p
 
 app.get('/admin/packages', passportConfig.isAuthenticated, packageController.getAdminPackages);
 app.get('/client/packages', packageController.getPackagePage);
-app.get('/admin/addpackage', passportConfig.isAuthenticated, packageController.getAddPackage);
+app.get('/admin/package/add', passportConfig.isAuthenticated, packageController.getAddUpdate);
+app.post('/admin/package/add', passportConfig.isAuthenticated, packageController.postAddUpdate);
+app.get('/admin/package/update/:id', passportConfig.isAuthenticated, packageController.getAddUpdate);
+app.post('/admin/package/update/:id', passportConfig.isAuthenticated, packageController.postAddUpdate);
+
 
 app.get('/requestquote', clientController.requestQuote);
 app.post('/patientdetail', clientController.getPatientDetail);
@@ -202,8 +208,10 @@ app.post('/admin/patient/update/:id', passportConfig.isAuthenticated, patientCon
 app.get('/admin/patients', passportConfig.isAuthenticated, patientController.getPatientList);
 
 //Peoples
-app.get('/admin/people/add', passportConfig.isAuthenticated, peopleController.getAddPeople);
-app.post('/admin/people/add', passportConfig.isAuthenticated, peopleController.postAddPeople);
+app.get('/admin/people/add', passportConfig.isAuthenticated, peopleController.getAddUpdate);
+app.post('/admin/people/add', passportConfig.isAuthenticated, peopleController.postAddUpdate);
+app.get('/admin/people/update/:id', passportConfig.isAuthenticated, peopleController.getAddUpdate);
+app.post('/admin/people/update/:id', passportConfig.isAuthenticated, peopleController.postAddUpdate);
 app.get('/admin/peoples', passportConfig.isAuthenticated, peopleController.getPeopleList);
 
 //Emails

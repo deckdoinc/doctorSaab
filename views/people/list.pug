@@ -21,10 +21,10 @@ block content
        - count = index + 1;
        tr
         td #{count}
-        td #{item.name}
+        td #{item.name.first} #{item.name.last}
         td #{item.phone}
-        td #{item.address}
-        td #{item.city}
+        td #{item.address.address}
+        td #{item.address.city}
         td #{item.type}
         td #{item.isactive}
         td

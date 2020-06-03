@@ -25,12 +25,12 @@ block content
 				.col-md-4
 					label(class='col-form-label font-weight-bold', for='type') Gender
 					select(class="status" data-style="btn-info" name="gender")
-						each gender in peopleAttr.gender
+						each gender in peopleAttr.genders
 							option(name=type value=gender) #{gender}
 				.col-md-4
 					label(class='col-form-label font-weight-bold', for='type') Type
 					select(class="status" data-style="btn-info" name="type")
-						each type in peopleAttr.peopletype
+						each type in peopleAttr.peopletypes
 							option(name=type value=type) #{type}
 				.col-md-4
 					label(class='col-form-label font-weight-bold', for='profession') Profession

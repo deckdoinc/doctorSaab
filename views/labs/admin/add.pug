@@ -32,7 +32,7 @@ block content
 				.col-md-3
 					label(class='col-form-label font-weight-bold', for='labtype') Type
 					select(class="type" data-style="btn-info" name="type")
-						each type in labAttr.labtype
+						each type in labAttr.labtypes
 							option(name=type value=type) #{type}
 				.col-md-3
 					label(class='col-form-label font-weight-bold', for='isactive') Is Active
