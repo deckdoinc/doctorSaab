@@ -173,6 +173,10 @@ app.get('/admin/searchtext/', passportConfig.isAuthenticated, testController.get
 app.get('/admin/updatelab/searchtext', passportConfig.isAuthenticated, testController.getSearchTestList);  
 app.get('/admin/package/searchtext', passportConfig.isAuthenticated, testController.getSearchTestList);
 app.get('/admin/package/update/searchtext', passportConfig.isAuthenticated, testController.getSearchTestList);
+app.get('/admin/patient/addcheckup/searchpackage', passportConfig.isAuthenticated, packageController.getSearchPackageList)
+app.get('/admin/patient/addcheckup/searchpeople', passportConfig.isAuthenticated, peopleController.getSearchPeopleList)
+
+
 app.get('/admin/tests', passportConfig.isAuthenticated, testController.getAdminTests);
 app.get('/admin/addtest', passportConfig.isAuthenticated, testController.getAddUpdate);
 app.post('/admin/addtest', passportConfig.isAuthenticated, testController.postAddUpdate);
@@ -205,6 +209,8 @@ app.get('/admin/patient/add', passportConfig.isAuthenticated, patientController.
 app.post('/admin/patient/add', passportConfig.isAuthenticated, patientController.postAddPatient);
 app.get('/admin/patient/update/:id', passportConfig.isAuthenticated, patientController.getUpdatePatient);
 app.post('/admin/patient/update/:id', passportConfig.isAuthenticated, patientController.postUpdatePatient);
+app.get('/admin/patient/addcheckup/:id', passportConfig.isAuthenticated, patientController.getAddUpdateCheckup);
+app.post('/admin/patient/addcheckup/:id', passportConfig.isAuthenticated, patientController.postAddUpdateCheckup)
 app.get('/admin/patients', passportConfig.isAuthenticated, patientController.getPatientList);
 
 //Peoples

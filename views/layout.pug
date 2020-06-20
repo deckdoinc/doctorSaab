@@ -59,3 +59,46 @@ html
           }
         });
       });
+
+    script.
+      $(function() {
+        $('.searchPackage').autocomplete({
+          source: function(letters, res) {
+            $.ajax({
+              url: "searchpackage/",
+              dataType:"jsonp",
+              type:"GET",
+              data: letters,
+              success: function(packages) {
+                console.log(packages);
+                res(packages)
+              },
+              error: function(err){
+                console.log("error happened");
+                console.log(err.status);
+              }
+            });
+          }
+        });
+      });
+
+    script.
+      $(function() {
+        $('.searchPeople').autocomplete({
+          source: function(letters, res) {
+            $.ajax({
+              url: "searchpeople/",
+              dataType:"jsonp",
+              type:"GET",
+              data: letters,
+              success: function(peoples) {
+                res(peoples)
+              },
+              error: function(err){
+                console.log("error happened");
+                console.log(err.status);
+              }
+            });
+          }
+        });
+      });

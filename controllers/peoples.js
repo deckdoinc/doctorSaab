@@ -77,3 +77,24 @@ exports.getPeopleList = (req, res) => {
 }
 
 
+exports.getSearchPeopleList = (req, res) => {
+	var regex = new RegExp(req.query["term"], 'i');
+	var peoples = People.find({'name.first': regex},{'name': 1, '_id' : 1}).sort({"updated_at":-1}).sort({"created_at":-1}).limit(30);
+	peoples.exec(function(err, data) {
+		var result = [];
+		if(!err) {
+			if(data && data.length && data.length > 0) {
+				data.forEach( people => {
+					var firstname = people.name.first;
+					var fullname = firstname.concat(" ", people.name.middle, " ", people.name.last);
+					result.push(fullname);
+				});
+			}
+
+			res.jsonp(result);
+		}
+
+	})
+}
+
+

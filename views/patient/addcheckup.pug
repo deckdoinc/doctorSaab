@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+	.pb-2.mt-2.mb-4.border-bottom
+		h1 #{id}
+		form(action='/admin/patient/addcheckup/'+id method='POST')
+			input(type='hidden', name='_csrf', value=_csrf)
+			input(type='hidden', name='patientid', value=id)
+			.form-group.row
+				table.table
+					thead
+						tr
+							th(scope='col') Date
+							th(scope='col') Package
+							th(scope='col') Doctor
+							th(scope='col') Nurse
+							th(scope='col') Senior Doctor
+					tbody
+						for val in [1,2]
+							tr
+								td
+									input.form-control(type="date" name="date")
+								td
+									input.form-control(type="text" class="searchPackage" placeholder="Search package name" aria-label="Search" name="package" autocomplete='')
+									input.form-control(type="hidden", class="packageid", name="packageid")
+								for val in [1,2,3]
+									td
+										input.form-control(type="text" class="searchPeople" placeholder="Search medical officer" aria-label="Search" name="people" autocomplete='')
+			.form-group
+				.col-md-10.p-1
+					button.btn.btn-primary(type='submit')
+						| Create Checkup

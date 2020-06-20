@@ -21,51 +21,56 @@ const PatientSchema = new mongoose.Schema({
 
   checkups: [
     {
-      date: Date,
-      tests: [
+      packages: [
         {
-         id: String,
-         labid: String,
-         costprice: Number,
-         sellprice: Number,
-         results:String
-        }
-      ],
-      medoff:[ // medical officials
-        { 
-          id: String,
-          name: String,
-          type: String,
-          payment: Number,
-          notes: String
-        }
-      ],
+          id:String,
+          date: Date,
+          tests: [
+            {
+             id: String,
+             labid: String,
+             costprice: Number,
+             sellprice: Number,
+             results:String
+            }
+          ],
+          medoff:[ // medical officials
+            { 
+              id: String,
+              name: String,
+              type: String,
+              payment: Number,
+              notes: String
+            }
+          ],
 
-      report: String,
-      validationreport: String,
-      medicines: [
-        {
-          type: String,
-          name: String,
-          dosage: String,
-          count: String
-        }
-      ],
+          report: String,
+          validationreport: String,
+          medicines: [
+            {
+              type: String,
+              name: String,
+              dosage: String,
+              count: String
+            }
+          ],
 
-      cost: Number,
-      misexpenses: Number,
-      client: [
-        {
-          id: String,
-          name: String,
-          email: String,
-          phone: Number,
-          state: Number
-        }
+          cost: Number,
+          misexpenses: Number,
+          client: [
+            {
+              id: String,
+              name: String,
+              email: String,
+              phone: Number,
+              state: Number
+            }
+          ],
+          packagenotes: String,
+        },
       ],
-
-      notes: String,
-    }
+      checkupnotes: String,
+    },
   ],
   status: String,
 

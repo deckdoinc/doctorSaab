@@ -63,7 +63,6 @@ exports.getUpdatePatient = (req, res) => {
 		Package.find({}, (err, result) => {
 			if(err) throw err;
 			output.packages = result;
-
 			res.render('patient/update', {outAttr : output});
 		}); 
 	}); 
@@ -91,4 +90,22 @@ exports.getPatientList = (req, res) => {
 
 		res.render('patient/patients', {patientAttr: patientAref});
 	});
+}
+
+
+/* Checkup details start from here */
+exports.getAddUpdateCheckup = (req, res) => {
+	res.render('patient/addcheckup', {id: req.params.id});
+}
+
+exports.postAddUpdateCheckup = (req, res) => {
+	Patient.findById(req.params.id, (err, result) => {
+		var packages = [];
+		for(var i =0; i < req.package.length; i++) {
+			var packageName = req.package[i];
+			
+		}
+	});
+	console.log(req.body);
+	res.render('patient/addcheckup', {id:req.params.id});
 }

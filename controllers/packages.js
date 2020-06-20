@@ -97,3 +97,23 @@ exports.getPackagePage = (req, res) => {
 		title: 'Packages',
 	});
 }
+
+exports.getSearchPackageList = (req, res) => {
+	var regex = new RegExp(req.query["term"], 'i');
+	var date = new Date();
+	var packages = Package.find({name: regex, startdate: {$lt: date}, enddate: {$gt: date}},{'name': 1, '_id' : 1}).sort({"updated_at":-1}).sort({"created_at":-1}).limit(30);
+	packages.exec(function(err, data) {
+		var result = {};
+		if(!err) {
+			if(data && data.length && data.length > 0) {
+				data.forEach( package => {
+					result[package._id] = package.name;
+				});
+			}
+
+			res.jsonp(result);
+		}
+
+	})
+
+}

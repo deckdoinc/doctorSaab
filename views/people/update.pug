@@ -59,7 +59,7 @@ block content
 					label(class='col-form-label font-weight-bold', for='city') City
 					select(class="status" data-style="btn-info" name="city")
 						option(name=city value=peopleAttr.address.city) #{peopleAttr.address.city}
-						each city in peopleAttr.cities
+						each city in peopleAttr.citiesdd
 							option(name=city value=city) #{city}
 				.col-md-4
 					label(class='col-form-label font-weight-bold', for='state') State
